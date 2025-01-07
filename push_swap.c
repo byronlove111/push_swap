@@ -29,14 +29,7 @@ int	main(int ac, char **av)
 	else
 		stack_init(&stack_a, av, 1);
 	if (!stack_is_sorted(&stack_a))
-	{
 		stack_sort(&stack_a, &stack_b);
-	}
-	///
-	stack_print(&stack_a);
-	ft_printf("------\n");
-	///
-	stack_print(&stack_b);
 	stack_free(&stack_a);
 	stack_free(&stack_b);
 }
