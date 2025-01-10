@@ -12,7 +12,7 @@
 
 #include "../includes/push_swap.h"
 
-void	commands_ra(t_stack_node **stack_a, int log)
+void	commands_ra(t_stack_node **stack_a)
 {
 	t_stack_node *first;
 	t_stack_node *last;
@@ -27,11 +27,10 @@ void	commands_ra(t_stack_node **stack_a, int log)
 	first->prev = last;
 	first->next = NULL;
 	last->prev = *stack_a;
-	if (log)
-		ft_printf("ra\n");
+	ft_printf("ra\n");
 }
 
-void	commands_rb(t_stack_node **stack_b, int log)
+void	commands_rb(t_stack_node **stack_b)
 {
 	t_stack_node *first;
 	t_stack_node *last;
@@ -46,14 +45,12 @@ void	commands_rb(t_stack_node **stack_b, int log)
 	first->prev = last;
 	first->next = NULL;
 	last->prev = *stack_b;
-	if (log)
-		ft_printf("rb\n");
+	ft_printf("rb\n");
 }
 
-void	commands_rr(t_stack_node **stack_a, t_stack_node **stack_b, int log)
+void	commands_rr(t_stack_node **stack_a, t_stack_node **stack_b)
 {
-	commands_ra(stack_a, 0);
-	commands_rb(stack_b, 0);
-	if (log)
-		ft_printf("rr\n");
+	commands_ra(stack_a);
+	commands_rb(stack_b);
+	ft_printf("rr\n");
 }

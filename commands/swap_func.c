@@ -31,24 +31,21 @@ static void	swap(t_stack_node **stack)
 	*stack = next_node;
 }
 
-void	commands_sa(t_stack_node **stack_a, int log)
+void	commands_sa(t_stack_node **stack_a)
 {
 	swap(stack_a);
-	if (log)
-		ft_printf("sa\n");
+	ft_printf("sa\n");
 }
 
-void	commands_sb(t_stack_node **stack_b, int log)
+void	commands_sb(t_stack_node **stack_b)
 {
 	swap(stack_b);
-	if (log)
-		ft_printf("sb\n");
+	ft_printf("sb\n");
 }
 
-void	commands_ss(t_stack_node **stack_a, t_stack_node **stack_b, int log)
+void	commands_ss(t_stack_node **stack_a, t_stack_node **stack_b)
 {
 	swap(stack_a);
 	swap(stack_b);
-	if (log)
-		ft_printf("ss\n");
+	ft_printf("ss\n");
 }

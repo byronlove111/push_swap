@@ -13,7 +13,7 @@
 #include "../includes/push_swap.h"
 
 
-void	commands_pa(t_stack_node **stack_a, t_stack_node **stack_b, int log)
+void	commands_pa(t_stack_node **stack_a, t_stack_node **stack_b)
 {
 	t_stack_node	*current;
 
@@ -28,11 +28,10 @@ void	commands_pa(t_stack_node **stack_a, t_stack_node **stack_b, int log)
 	if (*stack_a)
 		(*stack_a)->prev = current;
 	*stack_a = current;
-	if (log)
-		ft_printf("pa\n");
+	ft_printf("pa\n");
 }
 
-void	commands_pb(t_stack_node **stack_a, t_stack_node **stack_b, int log)
+void	commands_pb(t_stack_node **stack_a, t_stack_node **stack_b)
 {
 	t_stack_node	*current;
 
@@ -47,6 +46,5 @@ void	commands_pb(t_stack_node **stack_a, t_stack_node **stack_b, int log)
 	if (*stack_b)
 		(*stack_b)->prev = current;
 	*stack_b = current;
-	if (log)
-		ft_printf("pb\n");
+	ft_printf("pb\n");
 }

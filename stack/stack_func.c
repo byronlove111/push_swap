@@ -95,3 +95,16 @@ int	stack_is_sorted(t_stack_node **stack)
 	}
 	return (1);
 }
+
+int	stack_size(t_stack_node *stack)
+{
+	int	size;
+
+	size = 0;
+	while (stack)
+	{
+		size++;
+		stack = stack->next;
+	}
+	return (size);
+}

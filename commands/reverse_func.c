@@ -28,23 +28,20 @@ static void	reverse_rotate(t_stack_node **stack)
 	*stack = last;
 }
 
-void	commands_rra(t_stack_node **stack_a, int log)
+void	commands_rra(t_stack_node **stack_a)
 {
 	reverse_rotate(stack_a);
-	if (log)
-		ft_printf("rra\n");
+	ft_printf("rra\n");
 }
-void	commands_rrb(t_stack_node **stack_b, int log)
+void	commands_rrb(t_stack_node **stack_b)
 {
 	reverse_rotate(stack_b);
-	if (log)
-		ft_printf("rrb\n");
+	ft_printf("rrb\n");
 }
 
-void	commands_rrr(t_stack_node **stack_a, t_stack_node **stack_b, int log)
+void	commands_rrr(t_stack_node **stack_a, t_stack_node **stack_b)
 {
 	reverse_rotate(stack_a);
 	reverse_rotate(stack_b);
-	if (log)
-		ft_printf("rrr\n");
+	ft_printf("rrr\n");
 }

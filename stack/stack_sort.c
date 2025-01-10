@@ -12,64 +12,72 @@
 
 #include "../includes/push_swap.h"
 
-static int	get_max_bits(t_stack_node **stack)
+void get_index(t_stack_node **stack)
 {
-	t_stack_node	*current;
-	int			max_num;
-	int			max_bits;
+    t_stack_node *current;
+    t_stack_node *compare;
+    int index;
 
-	current = *stack;
-	max_num = current->index;
-	max_bits = 0;
-	while (current)
-	{
-		if (current->index > max_num)
-			max_num = current->index;
-		current = current->next;
-	}
-	while ((max_num >> max_bits) != 0)
-		max_bits++;
-	return (max_bits);
+    current = *stack;
+    while (current)
+    {
+        index = 0;
+        compare = *stack;
+        while (compare)
+        {
+            if (current->index > compare->index)
+                index++;
+            compare = compare->next;
+        }
+        current->index = index;
+        current = current->next;
+    }
 }
 
-static int	get_stack_size(t_stack_node **stack)
+int get_max_bits(t_stack_node **stack)
 {
-	t_stack_node	*current;
-	int			size;
+    t_stack_node *node;
+    int max;
+    int max_bits;
 
-	size = 0;
-	current = *stack;
-	while (current)
-	{
-		size++;
-		current = current->next;
-	}
-	return (size);
+    node = *stack;
+    max = node->index;
+    max_bits = 0;
+    while (node)
+    {
+        if (node->index > max)
+            max = node->index;
+        node = node->next;
+    }
+    while ((max >> max_bits) != 0)
+        max_bits++;
+    return (max_bits);
 }
 
-void	stack_sort(t_stack_node **stack_a, t_stack_node **stack_b)
+void stack_sort(t_stack_node **stack_a, t_stack_node **stack_b)
 {
-	int	size;
-	int	max_bits;
-	int	i;
-	int	j;
+    int i;
+    int j;
+    int size;
+    int max_bits;
 
-	size = get_stack_size(stack_a);
-	max_bits = get_max_bits(stack_a);
-	i = 0;
-	while (i < max_bits)
-	{
-		j = 0;
-		while (j < size)
-		{
-			if ((((*stack_a)->index >> i) & 1) == 1)
-				commands_ra(stack_a, 1);
-			else
-				commands_pb(stack_a, stack_b, 1);
-			j++;
-		}
-		while (*stack_b)
-			commands_pa(stack_a, stack_b, 1);
-		i++;
-	}
+    i = 0;
+    size = stack_size(*stack_a);
+    get_index(stack_a);
+    max_bits = get_max_bits(stack_a);
+    while (i < max_bits)
+    {
+        j = 0;
+        while (j < size)
+        {
+            if ((((*stack_a)->index >> i) & 1) == 1)
+                commands_ra(stack_a);
+            else
+                commands_pb(stack_a, stack_b);
+            j++;
+        }
+        while (*stack_b)
+            commands_pa(stack_a, stack_b);
+        i++;
+    }
 }
